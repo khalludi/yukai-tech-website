@@ -1,11 +1,11 @@
-import "./globals.css";
+import "../(default-layout)/globals.css";
 import { Inter } from "next/font/google";
 import { EXAMPLE_PATH, CMS_NAME } from "@/lib/constants";
 import Link from "next/link";
 
 export const metadata = {
-  title: `Next.js and ${CMS_NAME} Example`,
-  description: `This is a blog built with Next.js and ${CMS_NAME}.`,
+  title: `Yukai Technologies`,
+  description: `AWS Consulting Services company and blog`,
 };
 
 const inter = Inter({
@@ -16,7 +16,7 @@ const inter = Inter({
 
 function Footer() {
   return (
-    <footer className="bg-accent-1 border-t border-accent-2 bg-black">
+    <footer className="sticky top-[100vh] bg-accent-1 border-t border-accent-2 bg-black">
       <div className="container mx-auto px-5 py-8 gap-5 flex flex-col items-center justify-center text-white">
         <p>
           <Link href="#">Privacy Policy</Link> -{" "}
@@ -36,8 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <section className="min-h-screen">
-          <nav className="flex items-center justify-between mx-20 mt-10">
+        <section className="min-h-screen bg-black text-white">
+          <nav className="flex items-center justify-between px-20 pt-10">
             <Link href={"/"} className="font-bold text-4xl">
               yukai.tech
             </Link>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { customLoader } from "@/app/api";
+import { customLoader } from "@/app/(default-layout)/api";
 
 const imageLoader = async () => {
   const imageLoader = await fetch(

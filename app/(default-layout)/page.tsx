@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { ClientComponent, HeroComponent } from "@/app/hero_component";
-import ServiceCard, { ServiceCardProps } from "@/ui/service_card";
-import Image from "next/image";
-import { customLoader } from "@/app/api";
-import HomeNetworkImage from "@/app/home_network_image";
+import { HeroComponent } from "@/app/(default-layout)/hero_component";
+import ServiceCard, { ServiceCardProps } from "@/components/service_card";
+import HomeNetworkImage from "@/app/(default-layout)/home_network_image";
 
 const serviceCards: ServiceCardProps[] = [
   {
