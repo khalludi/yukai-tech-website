@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { HeroComponent } from "@/app/hero_component";
+import { ClientComponent, HeroComponent } from "@/app/hero_component";
 import ServiceCard, { ServiceCardProps } from "@/ui/service_card";
+import Image from "next/image";
+import { customLoader } from "@/app/api";
+import HomeNetworkImage from "@/app/home_network_image";
 
 const serviceCards: ServiceCardProps[] = [
   {
@@ -66,26 +69,7 @@ const serviceCards: ServiceCardProps[] = [
 
 export default async function Page() {
   return (
-    <div className="pt-10">
-      {/* Navbar */}
-      <nav className="flex items-center justify-between px-20">
-        <h1 className="font-bold text-4xl">yukai.tech</h1>
-        <div className="flex items-center gap-10">
-          <Link href="/about" className="text-xl font-medium">
-            About
-          </Link>
-          <Link href="/blog" className="text-xl font-medium">
-            Blog
-          </Link>
-          <Link
-            href="/contact-us"
-            className="text-xl font-medium p-2 bg-black text-white rounded-lg"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </nav>
-
+    <div className="mt-10">
       {/* Hero Section */}
       <div className="mt-10 flex flex-row items-center justify-center gap-10">
         <Suspense fallback={<div>Loading</div>}>
@@ -137,9 +121,48 @@ export default async function Page() {
         </div>
       </div>
 
-      <div className="m-10">Something else</div>
+      {/* Blog */}
+      <div className="flex flex-row mx-10 mt-10 gap-6">
+        <div className="flex flex-col w-2/3 gap-6">
+          <ArticleBlock name={"Article 1"} />
+          <ArticleBlock name={"Article 2"} />
+          <ArticleBlock name={"Article 3"} />
+        </div>
 
-      <h1>Home Page</h1>
+        <div>
+          <h1 className="text-8xl font-extrabold">BLOG</h1>
+          <h3 className="text-3xl font-bold">see more stories -{">"}</h3>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div className="relative overflow-hidden mt-10 p-10 bg-gray-200">
+        <HomeNetworkImage />
+
+        <div className="flex flex-col gap-10 z-20 relative">
+          <div>
+            <h1 className="font-extrabold text-5xl">Ready to get started?</h1>
+            <p className="text-2xl mt-1">
+              Schedule your free consultation today to elevate your cloud <br />
+              experience.
+            </p>
+          </div>
+          <Link
+            href="/contact-us"
+            className="text-xl font-medium px-3 py-1 bg-black text-white rounded-lg max-w-fit"
+          >
+            Contact Us
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ArticleBlock({ name }: { name: string }) {
+  return (
+    <div className="h-20 bg-gray-300 text-end flex items-end justify-end pb-2 pe-3 font-semibold">
+      {name}
     </div>
   );
 }

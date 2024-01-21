@@ -19,28 +19,10 @@ function Footer() {
     <footer className="bg-accent-1 border-t border-accent-2 bg-black">
       <div className="container mx-auto px-5 py-8 gap-5 flex flex-col items-center justify-center text-white">
         <p>
-          <Link href='#'>Privacy Policy</Link> - <Link href='#'>Terms of Use</Link> - <Link href='#'>Disclaimer</Link>
+          <Link href="#">Privacy Policy</Link> -{" "}
+          <Link href="#">Terms of Use</Link> - <Link href="#">Disclaimer</Link>
         </p>
         <p>2023 Yukai Technologies</p>
-        {/*<div className="py-28 flex flex-col lg:flex-row items-center">*/}
-        {/*  <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">*/}
-        {/*    Built with Next.js.*/}
-        {/*  </h3>*/}
-        {/*  <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">*/}
-        {/*    <a*/}
-        {/*      href="https://nextjs.org/docs"*/}
-        {/*      className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"*/}
-        {/*    >*/}
-        {/*      Read Documentation*/}
-        {/*    </a>*/}
-        {/*    <a*/}
-        {/*      href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}*/}
-        {/*      className="mx-3 font-bold hover:underline"*/}
-        {/*    >*/}
-        {/*      View on GitHub*/}
-        {/*    </a>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
       </div>
     </footer>
   );
@@ -55,6 +37,25 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <section className="min-h-screen">
+          <nav className="flex items-center justify-between mx-20 mt-10">
+            <Link href={"/"} className="font-bold text-4xl">
+              yukai.tech
+            </Link>
+            <div className="flex items-center gap-10">
+              <Link href="/about" className="text-xl font-medium">
+                About
+              </Link>
+              <Link href="/blog" className="text-xl font-medium">
+                Blog
+              </Link>
+              <Link
+                href="/contact-us"
+                className="text-xl font-medium p-2 bg-black text-white rounded-lg"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </nav>
           <main>{children}</main>
           <Footer />
         </section>

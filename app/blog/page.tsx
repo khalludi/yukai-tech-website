@@ -14,7 +14,7 @@ function Intro() {
     <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
       <Link href="/">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight md:pr-8">
-        yukai.tech
+          yukai.tech
         </h1>
       </Link>
       <h2 className="text-center md:text-left text-lg mt-5 md:pl-8">
@@ -47,7 +47,7 @@ function HeroPost({
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
           <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link href={`/posts/${slug}`} className="hover:underline">
+            <Link href={`/blog/posts/${slug}`} className="hover:underline">
               {title}
             </Link>
           </h3>
@@ -71,8 +71,7 @@ export default async function Page() {
   const morePosts = allPosts.slice(1);
 
   return (
-    <div className="container mx-auto px-5">
-      <Intro />
+    <div className="container mx-auto px-5 mt-10">
       {heroPost && (
         <HeroPost
           title={heroPost.title}
