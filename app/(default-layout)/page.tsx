@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { HeroComponent } from "@/app/(default-layout)/hero_component";
 import ServiceCard, { ServiceCardProps } from "@/components/service_card";
 import HomeNetworkImage from "@/app/(default-layout)/home_network_image";
+import HomeIkigaiImage from "@/app/(default-layout)/home_ikigai_image";
 
 const serviceCards: ServiceCardProps[] = [
   {
@@ -69,11 +70,13 @@ export default async function Page() {
   return (
     <div className="mt-10">
       {/* Hero Section */}
-      <div className="mt-10 flex flex-row items-center justify-center gap-10">
-        <Suspense fallback={<div>Loading</div>}>
-          <HeroComponent />
-        </Suspense>
-        <div className="flex flex-col gap-5" style={{ width: "40%" }}>
+      <div className="my-10 mx-20 flex flex-col-reverse md:flex-row items-center justify-center gap-10">
+        <div className="md:w-1/3">
+          <Suspense fallback={<div>Loading</div>}>
+            <HeroComponent />
+          </Suspense>
+        </div>
+        <div className="flex flex-col gap-5 md:w-3/5">
           <h1 className="text-3xl font-bold">AWS Simplified</h1>
           <h3 className="text-lg">
             At yukai, we focus on providing AWS expertise and technical
@@ -85,8 +88,8 @@ export default async function Page() {
       </div>
 
       {/* ikigai section */}
-      <div className="flex flex-row bg-gray-300 ms-20 mt-10 p-10 rounded-l-xl gap-5">
-        <div className="flex flex-col gap-2 w-1/2">
+      <div className="md:flex flex-row bg-gray-300 ms-20 mt-10 p-10 rounded-l-xl gap-10 items-center">
+        <div className="flex flex-col gap-2 md:w-1/2 pe-4">
           <div>
             <h1 className="text-3xl font-bold leading-6">ikigai</h1>
             <h3 className="opacity-50">reason for being</h3>
@@ -102,13 +105,17 @@ export default async function Page() {
             landscape together.
           </p>
         </div>
-        <div>Placeholder Image</div>
+        <div className="md:w-1/2 mt-10 md:m-0">
+          <Suspense fallback={<div>Loading</div>}>
+            <HomeIkigaiImage />
+          </Suspense>
+        </div>
       </div>
 
       {/* Services */}
       <div className="px-10 pt-10">
         <h1 className="text-3xl font-bold text-center pb-10">Services</h1>
-        <div className="columns-3 gap-8 items-start space-y-8">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 items-start space-y-8">
           {serviceCards.map((card) => (
             <ServiceCard
               key={card.heading}
@@ -129,7 +136,9 @@ export default async function Page() {
 
         <div>
           <h1 className="text-8xl font-extrabold">BLOG</h1>
-          <h3 className="text-3xl font-bold">see more stories -{">"}</h3>
+          <Link href="/blog" className="text-3xl font-bold hover:underline">
+            see more stories -{">"}
+          </Link>
         </div>
       </div>
 

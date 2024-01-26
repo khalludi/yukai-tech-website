@@ -6,26 +6,22 @@ const imageLoader = async () => {
     "https://cdn.contentful.com" +
       `/spaces/${process.env.CONTENTFUL_SPACE_ID}` +
       "/environments/master/" +
-      "assets/5QR5Dsru5NRfrTWsbBQ8UH" +
+      "assets/Am4DWKcBAlcS76fSrOLFS" +
       `?access_token=${process.env.CONTENTFUL_ACCESS_TOKEN}`,
   ).then((res) => res.json());
 
   return `https:${imageLoader?.fields?.file?.url}`;
 };
 
-export async function HeroComponent() {
+export default async function HomeIkigaiImage() {
   const imageUrl = await imageLoader();
 
-  return <ClientComponent imageUrl={imageUrl} />;
-}
-
-export function ClientComponent({ imageUrl }: { imageUrl: string }) {
   return (
     <Image
-      className="rounded-xl"
+      className="rounded-xl bg-cover"
       loader={customLoader}
       src={`${imageUrl}`}
-      alt="Cloud network"
+      alt="Abstract network image"
       width={2000}
       height={512}
     />
