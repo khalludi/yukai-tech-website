@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { CMS_NAME } from "@/lib/constants";
 import Link from "next/link";
 
 export const metadata = {
@@ -22,7 +21,7 @@ function Footer() {
           <Link href="#">Privacy Policy</Link> -{" "}
           <Link href="#">Terms of Use</Link> - <Link href="#">Disclaimer</Link>
         </p>
-        <p>2023 Yukai Technologies</p>
+        <p>&#169; 2023 Yukai Technologies</p>
       </div>
     </footer>
   );
