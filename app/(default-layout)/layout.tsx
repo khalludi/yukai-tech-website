@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import Navbar from "@/app/(default-layout)/Navbar";
+import { Suspense } from "react";
 
 export const metadata = {
   title: `Yukai Technologies`,
@@ -36,25 +38,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <section className="min-h-screen">
-          <nav className="flex items-center justify-between px-20 pt-10">
-            <Link href={"/"} className="font-bold text-4xl">
-              yukai.tech
-            </Link>
-            <div className="flex items-center gap-10">
-              <Link href="/about" className="text-xl font-medium">
-                About
-              </Link>
-              <Link href="/blog" className="text-xl font-medium">
-                Blog
-              </Link>
-              <Link
-                href="/contact-us"
-                className="text-xl font-medium p-2 bg-black text-white rounded-lg"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </nav>
+          <Suspense fallback={"loading"}>
+            <Navbar />
+          </Suspense>
           <main>{children}</main>
           <Footer />
         </section>
