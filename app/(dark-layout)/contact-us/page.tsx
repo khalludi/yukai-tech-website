@@ -30,7 +30,7 @@ const imageLoader = async () => {
   return `https:${imageLoader?.fields?.file?.url}`;
 };
 
-export async function ToriiGateImage() {
+async function ToriiGateImage() {
   const imageUrl = await imageLoader();
 
   return (
