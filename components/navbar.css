@@ -1,10 +1,10 @@
 .alert-enter {
     opacity: 0;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%);
 }
 .alert-enter-active {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%);
     transition: opacity 300ms, transform 300ms;
 }
 .alert-exit {
@@ -13,6 +13,6 @@
 }
 .alert-exit-active {
     opacity: 0;
-    transform: translateX(-50%) translateY(-200%);
-    transition: opacity 300ms, transform 500ms;
+    transform: translateX(-50%);
+    transition: opacity 300ms, transform 300ms;
 }
