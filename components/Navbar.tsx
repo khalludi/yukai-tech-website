@@ -12,7 +12,14 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { Squash as Hamburger } from "hamburger-react";
 import { CSSTransition } from "react-transition-group";
-export default function Navbar() {
+
+const classNames = require("classnames");
+
+interface NavbarProps {
+  contactUsPage?: boolean;
+}
+
+export default function Navbar({ contactUsPage = false }: NavbarProps) {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const nodeRef = useRef(null);
 
@@ -27,7 +34,10 @@ export default function Navbar() {
               legacyBehavior
               passHref
             >
-              <NavigationMenuLink className="text-4xl font-bold">
+              <NavigationMenuLink
+                className="text-4xl font-bold"
+                onClick={() => setMenuOpen(false)}
+              >
                 yukai.tech
               </NavigationMenuLink>
             </Link>
@@ -42,7 +52,7 @@ export default function Navbar() {
         <CSSTransition
           in={isMenuOpen}
           nodeRef={nodeRef}
-          timeout={2000}
+          timeout={300}
           classNames="alert"
           unmountOnExit
         >
@@ -53,14 +63,24 @@ export default function Navbar() {
             <div className="flex flex-col">
               <Link
                 href="/about"
-                className="text-xl font-medium hover:underline hover:bg-slate-50 px-20 py-10"
+                className={classNames(
+                  "text-xl font-medium hover:underline hover:bg-slate-50 px-20 py-10",
+                  {
+                    "!bg-black": contactUsPage,
+                  },
+                )}
                 onClick={() => setMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/blog"
-                className="text-xl font-medium hover:underline hover:bg-slate-50 px-20 py-10"
+                className={classNames(
+                  "text-xl font-medium hover:underline hover:bg-slate-50 px-20 py-10",
+                  {
+                    "!bg-black": contactUsPage,
+                  },
+                )}
                 onClick={() => setMenuOpen(false)}
               >
                 Blog
@@ -82,9 +102,13 @@ export default function Navbar() {
           <NavigationMenuItem>
             <Link href="/about" legacyBehavior passHref>
               <NavigationMenuLink
-                className={
-                  navigationMenuTriggerStyle() + " !text-xl font-medium"
-                }
+                className={classNames(
+                  navigationMenuTriggerStyle(),
+                  "!text-xl font-medium",
+                  {
+                    "!bg-black": contactUsPage,
+                  },
+                )}
               >
                 About
               </NavigationMenuLink>
@@ -98,9 +122,13 @@ export default function Navbar() {
               passHref
             >
               <NavigationMenuLink
-                className={
-                  navigationMenuTriggerStyle() + " !text-xl font-medium"
-                }
+                className={classNames(
+                  navigationMenuTriggerStyle(),
+                  " !text-xl font-medium",
+                  {
+                    "!bg-black": contactUsPage,
+                  },
+                )}
               >
                 Blog
               </NavigationMenuLink>

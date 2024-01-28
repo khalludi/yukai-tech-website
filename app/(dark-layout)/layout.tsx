@@ -1,7 +1,8 @@
 import "../(default-layout)/globals.css";
 import { Inter } from "next/font/google";
-import { EXAMPLE_PATH, CMS_NAME } from "@/lib/constants";
-import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import { Suspense } from "react";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: `Yukai Technologies`,
@@ -14,20 +15,6 @@ const inter = Inter({
   display: "swap",
 });
 
-function Footer() {
-  return (
-    <footer className="sticky top-[100vh] bg-accent-1 border-t border-accent-2 bg-black">
-      <div className="container mx-auto px-5 py-8 gap-5 flex flex-col items-center justify-center text-white">
-        <p>
-          <Link href="#">Privacy Policy</Link> -{" "}
-          <Link href="#">Terms of Use</Link> - <Link href="#">Disclaimer</Link>
-        </p>
-        <p>2023 Yukai Technologies</p>
-      </div>
-    </footer>
-  );
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -37,25 +24,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <section className="min-h-screen bg-black text-white">
-          <nav className="flex items-center justify-between px-20 pt-10">
-            <Link href={"/"} className="font-bold text-4xl">
-              yukai.tech
-            </Link>
-            <div className="flex items-center gap-10">
-              <Link href="/about" className="text-xl font-medium">
-                About
-              </Link>
-              <Link href="/blog" className="text-xl font-medium">
-                Blog
-              </Link>
-              <Link
-                href="/contact-us"
-                className="text-xl font-medium p-2 bg-black text-white rounded-lg"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </nav>
+          <Suspense fallback={"loading"}>
+            <Navbar contactUsPage={true} />
+          </Suspense>
           <main>{children}</main>
           <Footer />
         </section>
